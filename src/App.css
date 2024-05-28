@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background-image: url(./assets/images/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
 }
 
 .App-logo {
@@ -35,4 +39,86 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#container-total {
+  height: auto;
+}
+
+.container{
+  padding-top: 5rem;
+  padding-bottom: 3rem
+}
+
+.top-btn-position{
+ position: fixed;
+ bottom: 15px;
+ right: 40px;
+ font-size: 50px;
+ color: blue;
+ cursor: pointer;
+}
+
+.pagination {
+  --bs-pagination-padding-x: 2.5rem;
+  --bs-pagination-padding-y: 1rem;
+}
+.top-btn-position:hover{
+  color: rgb(44, 146, 187);
+  font-size: 60px; 
+  transition-behavior:  smooth;
+}
+
+.bi-select{
+  font-size: 30px;
+}
+
+.sidebar{
+  height: calc(100vh -52px);
+  border: 4px solid hsla(155, 78%, 42%, 0.663);
+  box-shadow: #84cfe4;
+  border-radius: 5%;
+  padding: 20px ;
+}
+
+.bi-payment{
+ font-size: 50px;
+ margin-right: 10px;
+}
+
+.row{
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.btn{
+  padding:0.5rem;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .movil {
+    flex-direction: column;
+  }
+}
+
+::-webkit-inner-spin-button { 
+  display:none;
+}
+::-webkit-calendar-picker-indicator { background-color:white}
+input[type=date]{
+  font-size:20px;
+}
+::-webkit-datetime-edit-text { color:#555555}
+::-webkit-datetime-edit-month-field { color:#555555 }
+::-webkit-datetime-edit-day-field { color: #555555; }
+::-webkit-datetime-edit-year-field { color:#555555; }
+::-webkit-calendar-picker-indicator{ 
+  background-image: url(http://icons.iconarchive.com/icons/dakirby309/simply-styled/256/Calendar-icon.png);
+      background-position:center;
+       background-size:30px 30px;
+       background-repeat:no-repeat;
+      color:rgba(204,204,204,0);
 }
