@@ -1,6 +1,8 @@
 
 import { IPassengerData, EMPTY_PASSENGER } from "../models/models";
 import { SERVER_URL, VALIDATE_PASSENGER } from '../helpers/const';
+import { ReservationService } from './Reservation.service';
+import calculateAge from "../helpers/calculateAge";
 
 export class PassengerService {
     private static ADULTS: IPassengerData[];
@@ -71,7 +73,19 @@ export class PassengerService {
                 state = VALIDATE_PASSENGER.MISSING_DATA;
                 return;
             }
-            if (passenger.type === 'ADULT' && passenger.date_of_born > passenger.date_expired_document) {
+            const datesData = ReservationService.getDates();
+            const dateValidate = datesData.mode === '0' ? datesData.returnDate : datesData.outboundDate;
+            const age = calculateAge(passenger.date_of_born, dateValidate);
+            console.log('age:', age, ' dateValidate:', dateValidate, ' DOB:', passenger.date_of_born);
+            if (passenger.type === 'ADULT' && age < 12) {
+                state = VALIDATE_PASSENGER.DATE_NOT_VALID;
+                return;
+            }
+            if (passenger.type === 'CHILD' && (age < 2 || age > 11) ) {
+                state = VALIDATE_PASSENGER.DATE_NOT_VALID;
+                return;
+            }
+            if (passenger.type === 'INFANT' && age > 1) {
                 state = VALIDATE_PASSENGER.DATE_NOT_VALID;
                 return;
             }

@@ -98,6 +98,11 @@ function List() {
         ReservationService.setNumberPassengersChildren(children);
         ReservationService.setOutNumberPassengersInfants(infants);
         ReservationService.setOffer(offer);
+        ReservationService.setDates({
+            mode,
+            outboundDate,
+            returnDate
+        });
         PassengerService.initAll(adults, children, infants);
         WorkflowService.setStep(1);
     }, []);
@@ -143,7 +148,7 @@ function List() {
                     <div>
                     <h1 className="text-center font-weight-bold shadow" id='scrollGo'>SELECCIONA VUELO DE REGRESO</h1>
                     <div className="row">
-                        <div className="col-sm-12 col-md-12 col-lg-10">
+                        <div className="col-sm-12 col-md-12 col-lg-12">
                             <div className="row">
                                 {
                                     returns.slice((pageReturns - 1) * 8, ((pageReturns - 1) * 8) + 8).map((flight: IFlight, index: number) => {
@@ -162,9 +167,7 @@ function List() {
                                 }
                             </div>
                         </div>
-                        <div className="col-sm-12 col-md-12 col-lg-2">
-                            PUBLICIDAD
-                        </div>
+
                     </div>
                     {pagination2Tag}
                 </div>
@@ -174,7 +177,7 @@ function List() {
                 <div className="container pt-4"  id="container-results">
                     
                     <div className="row">
-                        <div className="col-sm-12 col-md-12 col-lg-10">
+                        <div className="col-sm-12 col-md-12 col-lg-12">
                             <h1 className="text-center font-weight-bold shadow">SELECCIONA VUELO DE IDA</h1>
                             <div className="row">
                                 {
@@ -193,9 +196,6 @@ function List() {
                                     })
                                 }
                             </div>
-                        </div>
-                        <div className="col-sm-12 col-md-12 col-lg-2">
-                            PUBLICIDAD
                         </div>
                     </div>
                     {pagination1Tag}

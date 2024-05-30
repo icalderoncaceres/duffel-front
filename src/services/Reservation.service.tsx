@@ -1,5 +1,11 @@
 import { IFlight } from "../models/models";
 
+interface IDates {
+    mode: string,
+    outboundDate: string,
+    returnDate: string
+}
+
 export class ReservationService {
     private static OUTBOUND_FLIGHT: IFlight;
     private static RETURN_FLIGHT: IFlight;
@@ -7,6 +13,7 @@ export class ReservationService {
     private static NUMBER_PASSENGERS_CHILDREN: number;
     private static NUMBER_PASSENGERS_INFANTS: number;
     private static OFFER: string;
+    private static DATES: IDates;
 
     static getOutboundFlight(): IFlight {
         return ReservationService.OUTBOUND_FLIGHT;
@@ -40,6 +47,10 @@ export class ReservationService {
         return ReservationService.OFFER;
     }
 
+    static getDates(): IDates {
+        return ReservationService.DATES;
+    }
+
     static setNumberPassengersAdults(n: number): void {
         ReservationService.NUMBER_PASSENGERS_ADULTS = n;
     }
@@ -54,5 +65,9 @@ export class ReservationService {
 
     static setOffer(offer: string): void {
         ReservationService.OFFER = offer;
+    }
+
+    static setDates(dates: IDates) {
+        ReservationService.DATES = dates;
     }
 }
