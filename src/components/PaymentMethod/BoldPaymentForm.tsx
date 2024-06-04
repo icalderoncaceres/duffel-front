@@ -10,7 +10,7 @@ declare global {
 }
 export default function BoldPaymentForm(props: IProp) {
     const formRef = useRef(null);
-    /*
+    
     useEffect(() => {
 
         const script = document.createElement('script');
@@ -31,7 +31,8 @@ export default function BoldPaymentForm(props: IProp) {
             formRef.current.removeChild(script);
         };
     }, []);
-    */
+    
+    /*
     const handlePay = () => {
         const checkout = new BoldCheckout({
             orderId: props.config.orderId,
@@ -45,12 +46,11 @@ export default function BoldPaymentForm(props: IProp) {
         });
         checkout.open();
     }
+    */
 
     return (
-        <form>
-            <div id="bold-payment-button">
-                <button type="button" onClick={handlePay}>Pagar con BOLD</button>
-            </div>
+        <form ref={formRef}>
+
         </form>
     );
 }
